@@ -1,35 +1,34 @@
 import Link from './Link'
 import siteMetadata from '@/data/siteMetadata'
-import SocialIcon from '@/components/social-icons'
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="mt-16 flex flex-col items-center">
-        <div className="mb-3 flex space-x-4">
-          <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
-          <SocialIcon kind="github" href={siteMetadata.github} size={6} />
-          <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
-          <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
-          <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
-          <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
-          <SocialIcon kind="bluesky" href={siteMetadata.bluesky} size={6} />
-          <SocialIcon kind="x" href={siteMetadata.x} size={6} />
-          <SocialIcon kind="instagram" href={siteMetadata.instagram} size={6} />
-          <SocialIcon kind="threads" href={siteMetadata.threads} size={6} />
-          <SocialIcon kind="medium" href={siteMetadata.medium} size={6} />
-        </div>
-        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{siteMetadata.author}</div>
-          <div>{` • `}</div>
-          <div>{`© ${new Date().getFullYear()}`}</div>
-          <div>{` • `}</div>
-          <Link href="/">{siteMetadata.title}</Link>
-        </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
-            Tailwind Nextjs Theme
+    <footer className="mt-20 border-t border-gray-200 py-10 dark:border-gray-800">
+      <div className="flex flex-col gap-6 text-sm text-gray-600 sm:flex-row sm:items-start sm:justify-between dark:text-gray-400">
+        <div className="max-w-md">
+          <Link href="/" className="text-base font-semibold text-gray-900 dark:text-white">
+            {siteMetadata.title}
           </Link>
+          <p className="mt-3 leading-6">
+            We design and launch production-ready data platforms, then transfer ownership to your
+            team.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-2 sm:items-end">
+          <Link
+            href={`mailto:${siteMetadata.email}`}
+            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+          >
+            {siteMetadata.email}
+          </Link>
+          <Link
+            href={siteMetadata.linkedin}
+            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+          >
+            LinkedIn
+          </Link>
+          <p>© {new Date().getFullYear()} seniuts.com</p>
         </div>
       </div>
     </footer>

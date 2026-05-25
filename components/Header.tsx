@@ -4,7 +4,6 @@ import Logo from '@/data/logo.svg'
 import Link from './Link'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
-import SearchButton from './SearchButton'
 
 const Header = () => {
   let headerClass = 'flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'
@@ -42,7 +41,12 @@ const Header = () => {
               </Link>
             ))}
         </div>
-        <SearchButton />
+        <Link
+          href="/contact"
+          className="bg-primary-500 hover:bg-primary-600 hidden rounded-lg px-4 py-2 text-sm font-semibold text-white shadow sm:inline-flex"
+        >
+          Book an Architecture Audit
+        </Link>
         <ThemeSwitch />
         <MobileNav />
       </div>
