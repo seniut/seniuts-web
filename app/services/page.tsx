@@ -1,3 +1,5 @@
+import Link from '@/components/Link'
+
 export const metadata = {
   title: 'Services',
   description:
@@ -52,11 +54,23 @@ const packages = [
   },
 ]
 
+const principles = [
+  'Start with architecture before committing to a larger build.',
+  'Use PoC / MVP delivery to prove the foundation and create momentum.',
+  'Launch with standards, documentation, and transfer built into the plan.',
+]
+
+const primaryButtonClass =
+  'inline-flex items-center justify-center rounded-md bg-gray-950 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200'
+
 export default function ServicesPage() {
   return (
-    <main className="mx-auto max-w-5xl px-4 py-16">
+    <main className="mx-auto max-w-6xl py-16 sm:py-20">
       <section className="max-w-3xl">
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
+        <p className="border-primary-200 bg-primary-50 text-primary-800 dark:border-primary-900/60 dark:bg-primary-950/40 dark:text-primary-200 inline-flex rounded-md border px-3 py-1 text-xs font-semibold">
+          Services
+        </p>
+        <h1 className="mt-6 text-4xl font-semibold text-gray-950 sm:text-5xl dark:text-white">
           Data platform services for launch and handover
         </h1>
         <p className="mt-5 text-lg leading-8 text-gray-600 dark:text-gray-300">
@@ -65,22 +79,70 @@ export default function ServicesPage() {
         </p>
       </section>
 
-      <section className="mt-14 space-y-8">
-        {packages.map((service) => (
-          <ServicePackage key={service.title} service={service} />
+      <section className="mt-14 space-y-6">
+        {packages.map((service, index) => (
+          <ServicePackage key={service.title} service={service} index={index + 1} />
         ))}
+      </section>
+
+      <section className="mt-16 border-t border-gray-200/80 pt-12 dark:border-gray-800/80">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
+            <h2 className="text-2xl font-semibold text-gray-950 dark:text-white">
+              Built to reduce delivery risk
+            </h2>
+            <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
+              The packages are intentionally sequenced so leadership can make better decisions
+              before the platform becomes expensive to change.
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-gray-200/80 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950">
+            {principles.map((principle) => (
+              <p
+                key={principle}
+                className="border-b border-gray-200/80 px-5 py-4 text-sm leading-6 text-gray-700 last:border-b-0 dark:border-gray-800 dark:text-gray-300"
+              >
+                {principle}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-16 rounded-lg border border-gray-200/80 bg-gray-50 p-8 shadow-sm sm:p-10 dark:border-gray-800 dark:bg-gray-900/70">
+        <h2 className="text-2xl font-semibold text-gray-950 dark:text-white">
+          Start with the Architecture & Strategy Audit
+        </h2>
+        <p className="mt-4 max-w-2xl text-base leading-7 text-gray-600 dark:text-gray-300">
+          Use the audit to clarify target architecture, risks, roadmap, cost considerations, and the
+          right next delivery step.
+        </p>
+        <div className="mt-6">
+          <Link href="/contact" className={primaryButtonClass}>
+            Book an Architecture Audit
+          </Link>
+        </div>
       </section>
     </main>
   )
 }
 
-function ServicePackage({ service }: { service: (typeof packages)[number] }) {
+function ServicePackage({ service, index }: { service: (typeof packages)[number]; index: number }) {
   return (
-    <article className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-950">
+    <article className="relative overflow-hidden rounded-lg border border-gray-200/80 bg-white p-6 shadow-sm sm:p-8 dark:border-gray-800 dark:bg-gray-950">
+      <div className="from-primary-400/80 absolute inset-x-0 top-0 h-1 bg-gradient-to-r to-transparent" />
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <p className="text-primary-500 text-sm font-semibold">{service.duration}</p>
-          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+          <div className="flex flex-wrap items-center gap-3">
+            <p className="text-primary-700 dark:text-primary-300 text-sm font-semibold">
+              {String(index).padStart(2, '0')}
+            </p>
+            <p className="rounded-md border border-gray-200 px-2.5 py-1 text-xs font-semibold text-gray-700 dark:border-gray-800 dark:text-gray-300">
+              {service.duration}
+            </p>
+          </div>
+          <h2 className="mt-4 text-2xl font-semibold text-gray-950 dark:text-white">
             {service.title}
           </h2>
           <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
@@ -93,12 +155,16 @@ function ServicePackage({ service }: { service: (typeof packages)[number] }) {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold tracking-wide text-gray-900 uppercase dark:text-white">
+          <h3 className="text-sm font-semibold text-gray-900 uppercase dark:text-white">
             Deliverables
           </h3>
           <ul className="mt-4 grid gap-3 sm:grid-cols-2">
             {service.deliverables.map((deliverable) => (
-              <li key={deliverable} className="text-sm leading-6 text-gray-600 dark:text-gray-300">
+              <li
+                key={deliverable}
+                className="flex gap-3 text-sm leading-6 text-gray-600 dark:text-gray-300"
+              >
+                <span className="bg-primary-500 mt-2 h-1.5 w-1.5 shrink-0 rounded-sm" />
                 {deliverable}
               </li>
             ))}

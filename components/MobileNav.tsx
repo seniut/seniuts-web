@@ -2,13 +2,28 @@
 
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
+import { usePathname } from 'next/navigation'
 import { Fragment, useState, useEffect, useRef } from 'react'
 import Link from './Link'
 import headerNavLinks from '@/data/headerNavLinks'
+import siteMetadata from '@/data/siteMetadata'
+import Logo from '@/data/logo.svg'
+
+const baseLinkClass =
+  'w-full rounded-md border border-transparent px-3 py-3 text-base font-semibold text-gray-900 outline outline-0 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-900'
+
+const activeLinkClass =
+  'border-primary-200 bg-primary-50 text-primary-800 dark:border-primary-900/60 dark:bg-primary-950/40 dark:text-primary-200'
+
+function normalizePath(path: string) {
+  if (path === '/') return path
+  return path.replace(/\/$/, '')
+}
 
 const MobileNav = () => {
   const [navShow, setNavShow] = useState(false)
   const navRef = useRef(null)
+  const pathname = normalizePath(usePathname() || '/')
 
   const onToggleNav = () => {
     setNavShow((status) => {
@@ -28,12 +43,16 @@ const MobileNav = () => {
 
   return (
     <>
-      <button aria-label="Toggle Menu" onClick={onToggleNav} className="sm:hidden">
+      <button
+        aria-label="Toggle Menu"
+        onClick={onToggleNav}
+        className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-gray-200 text-gray-900 hover:border-gray-300 hover:bg-gray-50 md:hidden dark:border-gray-800 dark:text-gray-100 dark:hover:border-gray-700 dark:hover:bg-gray-900"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="hover:text-primary-500 dark:hover:text-primary-400 h-8 w-8 text-gray-900 dark:text-gray-100"
+          className="h-5 w-5"
         >
           <path
             fillRule="evenodd"
@@ -54,49 +73,80 @@ const MobileNav = () => {
             leaveTo="opacity-0"
             unmount={false}
           >
-            <div className="fixed inset-0 z-60 bg-black/25" />
+            <div className="fixed inset-0 z-60 bg-gray-950/30 backdrop-blur-sm" />
           </TransitionChild>
 
           <TransitionChild
             as={Fragment}
             enter="transition ease-in-out duration-300 transform"
             enterFrom="translate-x-full opacity-0"
-            enterTo="translate-x-0 opacity-95"
+            enterTo="translate-x-0 opacity-100"
             leave="transition ease-in duration-200 transform"
-            leaveFrom="translate-x-0 opacity-95"
+            leaveFrom="translate-x-0 opacity-100"
             leaveTo="translate-x-full opacity-0"
             unmount={false}
           >
-            <DialogPanel className="fixed top-0 left-0 z-70 h-full w-full bg-white/95 duration-300 dark:bg-gray-950/98">
+            <DialogPanel className="fixed inset-y-0 right-0 z-70 h-full w-full max-w-sm border-l border-gray-200 bg-white p-6 duration-300 dark:border-gray-800 dark:bg-gray-950">
+              <div className="flex items-center justify-between">
+                <Link
+                  href="/"
+                  aria-label={siteMetadata.headerTitle}
+                  className="flex items-center gap-3"
+                  onClick={onToggleNav}
+                >
+                  <span className="border-primary-100 dark:border-primary-900/60 flex h-9 w-9 items-center justify-center rounded-lg border bg-white shadow-sm dark:bg-gray-900">
+                    <Logo />
+                  </span>
+                  <span className="text-base font-semibold text-gray-950 dark:text-white">
+                    {siteMetadata.headerTitle}
+                  </span>
+                </Link>
+
+                <button
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-gray-200 text-gray-900 hover:border-gray-300 hover:bg-gray-50 dark:border-gray-800 dark:text-gray-100 dark:hover:border-gray-700 dark:hover:bg-gray-900"
+                  aria-label="Toggle Menu"
+                  onClick={onToggleNav}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                      fillRule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </div>
+
               <nav
                 ref={navRef}
-                className="mt-8 flex h-full basis-0 flex-col items-start overflow-y-auto pt-2 pl-12 text-left"
+                className="mt-8 flex basis-0 flex-col items-start gap-1 overflow-y-auto text-left"
               >
-                {headerNavLinks.map((link) => (
-                  <Link
-                    key={link.title}
-                    href={link.href}
-                    className="hover:text-primary-500 dark:hover:text-primary-400 mb-4 py-2 pr-4 text-2xl font-bold tracking-widest text-gray-900 outline outline-0 dark:text-gray-100"
-                    onClick={onToggleNav}
-                  >
-                    {link.title}
-                  </Link>
-                ))}
+                {headerNavLinks.map((link) => {
+                  const isActive = pathname === link.href
+
+                  return (
+                    <Link
+                      key={link.title}
+                      href={link.href}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={`${baseLinkClass} ${isActive ? activeLinkClass : ''}`}
+                      onClick={onToggleNav}
+                    >
+                      {link.title}
+                    </Link>
+                  )
+                })}
               </nav>
 
-              <button
-                className="hover:text-primary-500 dark:hover:text-primary-400 fixed top-7 right-4 z-80 h-16 w-16 p-4 text-gray-900 dark:text-gray-100"
-                aria-label="Toggle Menu"
-                onClick={onToggleNav}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    fillRule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </button>
+              <div className="mt-8 border-t border-gray-200 pt-6 dark:border-gray-800">
+                <Link
+                  href="/contact"
+                  className="inline-flex w-full justify-center rounded-md bg-gray-950 px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200"
+                  onClick={onToggleNav}
+                >
+                  Book an Architecture Audit
+                </Link>
+              </div>
             </DialogPanel>
           </TransitionChild>
         </Dialog>

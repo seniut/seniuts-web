@@ -9,7 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/blog', '/projects', '/tags'],
       },
     ],
     sitemap: `${siteMetadata.siteUrl}/sitemap.xml`,

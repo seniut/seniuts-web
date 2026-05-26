@@ -1,3 +1,5 @@
+import Link from '@/components/Link'
+
 export const metadata = {
   title: 'About',
   description:
@@ -22,11 +24,24 @@ const principles = [
   },
 ]
 
+const expectations = [
+  'Architecture that is specific enough to guide implementation decisions.',
+  'Delivery work that leaves behind standards, documentation, and operational context.',
+  'A transfer plan that makes internal ownership realistic instead of aspirational.',
+]
+
+const primaryButtonClass =
+  'inline-flex items-center justify-center rounded-md bg-gray-950 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200'
+
 export default function AboutPage() {
   return (
-    <main className="mx-auto max-w-4xl px-4 py-16">
+    <main className="mx-auto max-w-5xl py-16 sm:py-20">
       <section>
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
+        <p className="border-primary-200 bg-primary-50 text-primary-800 dark:border-primary-900/60 dark:bg-primary-950/40 dark:text-primary-200 inline-flex rounded-md border px-3 py-1 text-xs font-semibold">
+          Boutique data consulting
+        </p>
+
+        <h1 className="mt-6 text-4xl font-semibold text-gray-950 sm:text-5xl dark:text-white">
           About seniuts.com
         </h1>
 
@@ -41,11 +56,11 @@ export default function AboutPage() {
         </p>
       </section>
 
-      <section className="mt-14 grid gap-6">
+      <section className="mt-14 grid gap-5 md:grid-cols-3">
         {principles.map((principle) => (
           <article
             key={principle.title}
-            className="rounded-lg border border-gray-200 p-6 dark:border-gray-800"
+            className="border-primary-200 dark:border-t-primary-900 rounded-lg border border-t-2 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-950"
           >
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
               {principle.title}
@@ -57,8 +72,8 @@ export default function AboutPage() {
         ))}
       </section>
 
-      <section className="mt-14 border-t border-gray-200 pt-10 dark:border-gray-800">
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+      <section className="mt-16 border-t border-gray-200/80 pt-12 dark:border-gray-800/80">
+        <h2 className="text-2xl font-semibold text-gray-950 dark:text-white">
           Senior data platform expertise
         </h2>
         <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
@@ -70,6 +85,37 @@ export default function AboutPage() {
           seniuts.com is based in Poland and works globally with technology leaders who need a
           reliable platform foundation and a realistic transfer plan.
         </p>
+      </section>
+
+      <section className="mt-16 border-t border-gray-200/80 pt-12 dark:border-gray-800/80">
+        <h2 className="text-2xl font-semibold text-gray-950 dark:text-white">
+          What clients should expect
+        </h2>
+        <div className="mt-6 rounded-lg border border-gray-200/80 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950">
+          {expectations.map((expectation) => (
+            <p
+              key={expectation}
+              className="border-b border-gray-200/80 px-5 py-4 text-base leading-7 text-gray-600 last:border-b-0 dark:border-gray-800 dark:text-gray-300"
+            >
+              {expectation}
+            </p>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16 rounded-lg border border-gray-200/80 bg-gray-50 p-8 shadow-sm sm:p-10 dark:border-gray-800 dark:bg-gray-900/70">
+        <h2 className="text-2xl font-semibold text-gray-950 dark:text-white">
+          Book an Architecture Audit
+        </h2>
+        <p className="mt-4 max-w-2xl text-base leading-7 text-gray-600 dark:text-gray-300">
+          Start with a clear view of your architecture, delivery risks, and the ownership path your
+          team will need after launch.
+        </p>
+        <div className="mt-6">
+          <Link href="/contact" className={primaryButtonClass}>
+            Book an Architecture Audit
+          </Link>
+        </div>
       </section>
     </main>
   )

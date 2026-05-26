@@ -1,5 +1,53 @@
 # AGENTS.md — seniuts.com Project Instructions
 
+## Agent workflow
+
+Before making changes:
+
+- Read the relevant project instructions.
+- Use available skills under `.agents/skills` when they match the task.
+- Start with a short plan and wait for confirmation for non-trivial changes.
+- Work in small scoped steps.
+- Prefer the current git diff as the main working scope.
+- Do not scan the whole repository unless explicitly asked.
+
+## RTK usage
+
+If `rtk` is available in PATH, use it for large-output shell commands.
+
+Prefer RTK for noisy commands such as:
+
+- `rtk git status`
+- `rtk git diff`
+- `rtk git diff --name-only`
+- `rtk npm test`
+- `rtk npm run lint`
+- `rtk npm run build`
+- `rtk rg`
+- `rtk grep`
+
+If `rtk` is not available, use the normal shell commands instead.
+
+For debugging:
+
+1. Use summarized output first when possible.
+2. Inspect raw output before final root-cause conclusions.
+
+Do not use RTK when exact stdout is required or when the command output is already small.
+
+## Review workflow
+
+Use `crit` only when a task needs:
+
+- structured UI review
+- plan review
+- large diff review
+- iterative feedback loops
+
+Use `$crit` only when the user explicitly asks for a review loop or when the task clearly requires structured review.
+
+Do not use `crit` for simple one-line edits or small mechanical changes.
+
 ## Project identity
 
 This repository contains the website for **seniuts.com**.
@@ -230,6 +278,82 @@ A task is done only when:
 - The design is clean and readable.
 - The implementation does not introduce unnecessary complexity.
 - The user receives a concise Russian summary of what changed and what to do next.
+
+## Contact details
+
+Use these contact details across the website unless the user explicitly changes them:
+
+- Email: `vasiliseniuts@gmail.com`
+- Email link: `mailto:vasiliseniuts@gmail.com`
+- LinkedIn: `https://www.linkedin.com/in/vasili-seniuts/`
+
+For the current MVP stage, it is acceptable to use the founder's personal LinkedIn and email.
+
+Later, the project may move to domain-based email such as `contact@seniuts.com` and a company LinkedIn page.
+
+## Trust and proof constraints
+
+Do not invent:
+
+- clients
+- testimonials
+- logos
+- case studies
+- metrics
+- revenue numbers
+- team size
+- certifications
+- partnerships
+
+If proof is needed, use honest credibility signals:
+
+- founder's senior hands-on data engineering experience
+- practical architecture principles
+- production-first thinking
+- documentation and handover approach
+- cloud-native and lakehouse expertise
+
+## Current technical state
+
+The project uses:
+
+- Next.js App Router
+- React
+- TypeScript
+- Tailwind CSS
+- npm as the package manager
+
+The project does not currently use:
+
+- Blog
+- Projects
+- Tags
+- Search
+- Newsletter
+- RSS
+- Contentlayer
+- MDX content pipeline
+
+Do not reintroduce these features unless the user explicitly asks.
+
+## Current public route scope
+
+The public MVP website should contain only:
+
+- `/`
+- `/services`
+- `/about`
+- `/contact`
+
+Do not reintroduce public routes for:
+
+- `/blog`
+- `/projects`
+- `/tags`
+- `/feed.xml`
+- `/api/newsletter`
+
+unless the user explicitly asks for them.
 
 ## Local Development
 

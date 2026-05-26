@@ -6,12 +6,10 @@ const siteMetadata = {
     'Data platform consulting for architecture, PoC / MVP delivery, launch, and clean ownership transfer.',
   language: 'en-us',
   siteUrl: 'https://seniuts.com',
-  email: 'contact@seniuts.com',
+  email: 'vasiliseniuts@gmail.com',
   github: 'https://github.com/seniut',
-  linkedin: 'https://www.linkedin.com/company/seniuts-com',
-  socialBanner: '/static/images/twitter-card.png',
+  linkedin: 'https://www.linkedin.com/in/vasili-seniuts/',
   locale: 'en-US',
-  analytics: {},
 }
 
 module.exports = siteMetadata
