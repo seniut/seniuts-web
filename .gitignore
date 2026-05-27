@@ -39,3 +39,7 @@ npm-debug.log*
 .env.production.local
 
 .backup/
+
+# Generated CV PDFs
+generated/*
+!generated/.gitkeep

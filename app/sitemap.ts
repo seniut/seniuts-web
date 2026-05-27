@@ -5,7 +5,7 @@ export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date().toISOString().split('T')[0]
-  const routes = ['', 'services', 'about', 'contact']
+  const routes = ['', 'architecture-audit', 'services', 'resources', 'about', 'contact']
 
   return routes.map((route) => ({
     url: route ? `${siteMetadata.siteUrl}/${route}` : siteMetadata.siteUrl,

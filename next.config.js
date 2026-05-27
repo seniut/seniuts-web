@@ -57,9 +57,6 @@ module.exports = async () => {
     reactStrictMode: true,
     trailingSlash: false,
     pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
-    eslint: {
-      dirs: ['app', 'components'],
-    },
     images: {
       unoptimized,
     },

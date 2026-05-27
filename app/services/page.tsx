@@ -10,22 +10,22 @@ const packages = [
   {
     title: 'Architecture & Strategy Audit',
     duration: '1–2 weeks',
-    outcome: 'Clear target architecture and roadmap.',
+    outcome: 'Clear target architecture, prioritized roadmap, and delivery recommendations.',
     description:
-      'For companies that need a practical view of the current state before investing in a data platform build.',
+      'For companies that need a practical view of the current state before investing in a data platform build. Get clarity on what to build first and what to delay.',
     deliverables: [
       'Current state assessment',
-      'Target architecture',
-      'Roadmap',
-      'Risks and quick wins',
+      'Target architecture diagram',
       'Technology recommendations',
+      '30/60/90-day roadmap',
+      'Risks and quick wins',
       'Cost and scalability considerations',
     ],
   },
   {
     title: 'PoC / MVP Delivery',
     duration: '3–6 weeks',
-    outcome: 'Working data platform foundation.',
+    outcome: 'Working data platform foundation that proves the architecture.',
     description:
       'For teams that need to prove the architecture quickly and create delivery momentum with a focused foundation.',
     deliverables: [
@@ -46,10 +46,25 @@ const packages = [
     deliverables: [
       'Production-ready data platform foundation',
       'Engineering standards',
-      'Runbooks',
-      'Onboarding',
+      'Runbooks and observability',
+      'Team onboarding',
       'Knowledge transfer',
       'Optional short-term stabilization support',
+    ],
+  },
+  {
+    title: 'Fractional Technical Data Lead',
+    duration: 'Ongoing',
+    outcome: 'Embedded senior guidance while your internal team grows.',
+    description:
+      'For companies that need senior data engineering leadership on a part-time or embedded basis during platform build or transition.',
+    deliverables: [
+      'Architecture decisions',
+      'Code and PR reviews',
+      'Technical mentoring',
+      'Delivery planning',
+      'Vendor / tooling evaluation',
+      'Hiring support',
     ],
   },
 ]
@@ -61,7 +76,7 @@ const principles = [
 ]
 
 const primaryButtonClass =
-  'inline-flex items-center justify-center rounded-md bg-gray-950 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200'
+  'inline-flex items-center justify-center rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 dark:bg-primary-500 dark:text-gray-950 dark:hover:bg-primary-400'
 
 export default function ServicesPage() {
   return (

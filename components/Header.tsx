@@ -31,10 +31,10 @@ const Header = () => {
       <div className="flex items-center gap-2 leading-5">
         <DesktopNav />
         <Link
-          href="/contact"
-          className="hidden rounded-md bg-gray-950 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 md:inline-flex dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200"
+          href="/architecture-audit"
+          className="bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-400 hidden rounded-md px-4 py-2.5 text-sm font-semibold text-white shadow-sm md:inline-flex dark:text-gray-950"
         >
-          Book an Architecture Audit
+          Book an Audit
         </Link>
         <ThemeSwitch />
         <MobileNav />

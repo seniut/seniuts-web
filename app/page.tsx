@@ -5,7 +5,11 @@ const problems = [
   'Data is spread across tools, databases, and manual exports.',
   'Pipelines break often and nobody fully owns the foundation.',
   'Reporting is slow because the architecture was never clearly defined.',
+  'Data quality checks are missing or inconsistent.',
+  'Observability and runbooks do not exist.',
+  'Spark, Airflow, or Kafka workloads are expensive or unreliable.',
   'Teams need momentum, but do not want long-term vendor dependency.',
+  'There is no realistic platform roadmap.',
 ]
 
 const idealClients = [
@@ -30,6 +34,11 @@ const services = [
     title: 'Launch & Transfer',
     description:
       'A production-ready platform foundation with standards, runbooks, onboarding, and clean ownership transfer.',
+  },
+  {
+    title: 'Fractional Technical Data Lead',
+    description:
+      'Embedded senior guidance during platform build or transition while your internal team grows.',
   },
 ]
 
@@ -103,13 +112,13 @@ const trustSignals = [
 ]
 
 const primaryButtonClass =
-  'inline-flex items-center justify-center rounded-md bg-gray-950 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200'
+  'inline-flex items-center justify-center rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 dark:bg-primary-500 dark:text-gray-950 dark:hover:bg-primary-400'
 
 const secondaryButtonClass =
-  'inline-flex items-center justify-center rounded-md border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-900 hover:border-gray-400 hover:bg-gray-50 dark:border-gray-700 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-900'
+  'inline-flex items-center justify-center rounded-md border border-primary-300 px-6 py-3 text-sm font-semibold text-gray-900 hover:border-primary-500 hover:bg-primary-50 dark:border-primary-800 dark:text-white dark:hover:border-primary-600 dark:hover:bg-primary-950/30'
 
 const textLinkClass =
-  'text-primary-700 hover:text-primary-800 dark:text-primary-300 dark:hover:text-primary-200 text-sm font-semibold'
+  'text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 text-sm font-semibold'
 
 export default function HomePage() {
   return (
@@ -118,10 +127,13 @@ export default function HomePage() {
         <div className="from-primary-100/50 dark:from-primary-950/30 absolute inset-0 -z-10 bg-gradient-to-br via-white to-gray-50 dark:via-gray-950 dark:to-gray-950" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-48 bg-[linear-gradient(to_right,rgba(148,163,184,0.14)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.14)_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom,transparent,black,transparent)] bg-[size:36px_36px] dark:bg-[linear-gradient(to_right,rgba(51,65,85,0.38)_1px,transparent_1px),linear-gradient(to_bottom,rgba(51,65,85,0.38)_1px,transparent_1px)]" />
 
+        {/* Data flow node decoration */}
+        <DataFlowBackground />
+
         <div className="grid gap-12 lg:grid-cols-[1.04fr_0.96fr] lg:items-center">
           <div className="text-center lg:text-left">
             <p className="border-primary-200 bg-primary-50 text-primary-800 dark:border-primary-900/60 dark:bg-primary-950/40 dark:text-primary-200 inline-flex rounded-md border px-3 py-1 text-xs font-semibold">
-              Launch & Transfer data platform consulting
+              Databricks & Spark · Lakehouse Architecture · Cost Optimization
             </p>
 
             <h1 className="mt-6 max-w-3xl text-4xl leading-tight font-semibold text-gray-950 sm:text-5xl lg:text-6xl dark:text-white">
@@ -130,8 +142,8 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-600 dark:text-gray-300">
-              seniuts.com helps companies design, build, and transfer production-ready data platform
-              foundations without long-term vendor dependency.
+              Founder-led data platform consulting for scale-ups that need architecture, cost
+              optimization, and a clear path to internal ownership.
             </p>
 
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row lg:items-start">
@@ -155,12 +167,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Section>
+      <Section alternate>
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div>
             <SectionTitle>When data systems grow faster than ownership</SectionTitle>
             <SectionLead>
-              seniuts.com helps technology leaders move from unclear, fragile data systems to a
+              seniuts.com helps CTOs and Heads of Data move from unclear, fragile data systems to a
               scalable foundation their own team can operate.
             </SectionLead>
           </div>
@@ -205,7 +217,7 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
             <ServiceCard
               key={service.title}
@@ -246,7 +258,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section>
+      <Section alternate>
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
             <SectionTitle>How we work</SectionTitle>
@@ -315,9 +327,13 @@ export default function HomePage() {
   )
 }
 
-function Section({ children }: { children: ReactNode }) {
+function Section({ children, alternate }: { children: ReactNode; alternate?: boolean }) {
   return (
-    <section className="mx-auto max-w-6xl border-t border-gray-200/80 py-16 sm:py-20 dark:border-gray-800/80">
+    <section
+      className={`mx-auto max-w-6xl border-t border-gray-200/80 py-16 sm:py-20 dark:border-gray-800/80 ${
+        alternate ? 'rounded-lg bg-gray-50/60 px-6 sm:px-10 dark:bg-gray-900/30' : ''
+      }`}
+    >
       {children}
     </section>
   )
@@ -350,7 +366,7 @@ function HeroDiagram() {
   ]
 
   return (
-    <div className="relative mx-auto w-full max-w-lg rounded-lg border border-gray-200/80 bg-white/85 p-5 shadow-[0_24px_70px_rgba(15,23,42,0.10)] backdrop-blur dark:border-gray-800 dark:bg-gray-950/85 dark:shadow-none">
+    <div className="hero-glow relative mx-auto w-full max-w-lg rounded-lg border border-gray-200/80 bg-white/85 p-5 backdrop-blur dark:border-gray-800 dark:bg-gray-950/85">
       <div className="flex items-center justify-between border-b border-gray-200/80 pb-4 dark:border-gray-800">
         <p className="text-sm font-semibold text-gray-950 dark:text-white">Architecture path</p>
         <p className="text-primary-700 dark:text-primary-300 text-xs font-semibold">
@@ -457,6 +473,77 @@ function ServiceCard({
       </p>
       <h3 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
       <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-300">{description}</p>
+    </div>
+  )
+}
+
+function DataFlowBackground() {
+  // Abstract network of nodes and edges suggesting data flow / pipelines
+  const nodes = [
+    { cx: 80, cy: 60, delay: 0 },
+    { cx: 200, cy: 30, delay: 0.5 },
+    { cx: 320, cy: 80, delay: 1 },
+    { cx: 440, cy: 40, delay: 1.5 },
+    { cx: 560, cy: 90, delay: 0.3 },
+    { cx: 680, cy: 50, delay: 0.8 },
+    { cx: 800, cy: 70, delay: 1.2 },
+    { cx: 920, cy: 35, delay: 0.6 },
+    { cx: 140, cy: 120, delay: 1.8 },
+    { cx: 360, cy: 140, delay: 0.4 },
+    { cx: 600, cy: 130, delay: 1.1 },
+    { cx: 760, cy: 150, delay: 0.9 },
+    { cx: 900, cy: 120, delay: 1.4 },
+  ]
+
+  const edges = [
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [3, 4],
+    [4, 5],
+    [5, 6],
+    [6, 7],
+    [0, 8],
+    [8, 9],
+    [9, 10],
+    [10, 11],
+    [11, 12],
+    [2, 9],
+    [4, 10],
+    [6, 12],
+  ]
+
+  return (
+    <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-44 overflow-hidden opacity-60 dark:opacity-80">
+      <svg
+        className="h-full w-full"
+        viewBox="0 0 1000 160"
+        preserveAspectRatio="xMidYMid slice"
+        fill="none"
+      >
+        {edges.map(([from, to], i) => (
+          <line
+            key={i}
+            x1={nodes[from].cx}
+            y1={nodes[from].cy}
+            x2={nodes[to].cx}
+            y2={nodes[to].cy}
+            className="animate-flow-line stroke-primary-500/50 dark:stroke-primary-400/40"
+            strokeWidth="1.5"
+            style={{ animationDelay: `${nodes[from].delay}s` }}
+          />
+        ))}
+        {nodes.map((node, i) => (
+          <circle
+            key={i}
+            cx={node.cx}
+            cy={node.cy}
+            r="3.5"
+            className="animate-pulse-node fill-primary-500/80 dark:fill-primary-400/70"
+            style={{ animationDelay: `${node.delay}s` }}
+          />
+        ))}
+      </svg>
     </div>
   )
 }

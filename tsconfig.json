@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "incremental": true,
     "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -8,13 +7,12 @@
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "composite": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
@@ -26,7 +24,8 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
@@ -35,7 +34,8 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.json",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

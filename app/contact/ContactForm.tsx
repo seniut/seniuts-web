@@ -3,7 +3,7 @@ import siteMetadata from '@/data/siteMetadata'
 
 const mailtoHref = `mailto:${siteMetadata.email}`
 const primaryButtonClass =
-  'inline-flex items-center justify-center rounded-md bg-gray-950 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200'
+  'inline-flex items-center justify-center rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 dark:bg-primary-500 dark:text-gray-950 dark:hover:bg-primary-400'
 
 export default function ContactForm() {
   return (

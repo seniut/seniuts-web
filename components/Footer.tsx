@@ -17,8 +17,8 @@ export default function Footer() {
             </span>
           </Link>
           <p className="mt-4 leading-6">
-            We design and launch production-ready data platforms, then transfer ownership to your
-            team.
+            Independent data platform consulting: architecture, PoC / MVP delivery, launch, and
+            ownership transfer.
           </p>
         </div>
 
@@ -60,10 +60,10 @@ export default function Footer() {
             </div>
 
             <Link
-              href="/contact"
+              href="/architecture-audit"
               className="mt-5 inline-flex rounded-md bg-gray-950 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200"
             >
-              Book an Architecture Audit
+              Book an Audit
             </Link>
           </div>
         </div>

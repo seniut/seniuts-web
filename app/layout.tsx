@@ -50,7 +50,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang={siteMetadata.language} className="scroll-smooth" suppressHydrationWarning>
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
-      <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white">
+      <body
+        className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white"
+        suppressHydrationWarning
+      >
         <ThemeProviders>
           <SectionContainer>
             <Header />

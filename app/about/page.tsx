@@ -31,7 +31,7 @@ const expectations = [
 ]
 
 const primaryButtonClass =
-  'inline-flex items-center justify-center rounded-md bg-gray-950 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 dark:bg-white dark:text-gray-950 dark:hover:bg-gray-200'
+  'inline-flex items-center justify-center rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 dark:bg-primary-500 dark:text-gray-950 dark:hover:bg-primary-400'
 
 export default function AboutPage() {
   return (
@@ -74,16 +74,23 @@ export default function AboutPage() {
 
       <section className="mt-16 border-t border-gray-200/80 pt-12 dark:border-gray-800/80">
         <h2 className="text-2xl font-semibold text-gray-950 dark:text-white">
-          Senior data platform expertise
+          Founder-led, not agency-run
         </h2>
         <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
-          The company is led by Vasili Seniuts, a Data Engineer and Data Architect with around eight
-          years of hands-on experience across Python, Scala, Spark, SQL, AWS, Azure, Kafka, Airflow,
-          Delta Lake, lakehouse architecture, and cloud-native data platforms.
+          seniuts.com is led by Vasili Seniuts — a hands-on Lead Data Engineer and independent Data
+          Platform Consultant based in Poland. You work directly with the founder, not an account
+          manager. The focus is senior technical guidance, practical delivery, and clear ownership
+          transfer.
         </p>
         <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
-          seniuts.com is based in Poland and works globally with technology leaders who need a
-          reliable platform foundation and a realistic transfer plan.
+          With 8+ years of experience across Databricks, Spark, Delta Lake, Airflow, Dagster, Kafka,
+          AWS, and Azure — including reducing Databricks compute costs by 25% on a 70–80TB/day
+          platform — the work is grounded in production engineering realities, not vendor slideware.
+        </p>
+        <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
+          seniuts.com works globally with CTOs, Heads of Data, and technology leaders who need a
+          reliable platform foundation and a realistic transfer plan. As the practice grows, trusted
+          senior engineers may join for larger projects — but the founder remains hands-on.
         </p>
       </section>
 
