@@ -1,0 +1,68 @@
+% cv-header.tex — Lightweight LaTeX settings for CV PDF generation
+% Used by scripts/make-cv.sh via --include-in-header
+% Font: Latin Modern Sans (default TeX Live font, works on macOS and Ubuntu)
+
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{graphicx}
+
+% Brand color for headings and links
+\definecolor{CVBlue}{HTML}{0F3A5F}
+
+% Clickable links
+\hypersetup{
+  colorlinks=true,
+  linkcolor=CVBlue,
+  urlcolor=CVBlue
+}
+
+% Paragraph spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+% List spacing
+\setlist[itemize]{
+  topsep=2pt,
+  itemsep=2pt,
+  parsep=0pt,
+  leftmargin=1.2em
+}
+
+% Section headings: large, bold, colored
+\titleformat{\section}
+  {\Large\bfseries\color{CVBlue}}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+
+% Subsection headings: bold, normal size
+\titleformat{\subsection}
+  {\large\bfseries}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+
+% Subsubsection headings: bold, normal size
+\titleformat{\subsubsection}
+  {\normalsize\bfseries}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\subsubsection}{0pt}{6pt}{2pt}
+
+% Reduce aggressive hyphenation
+\emergencystretch=3em
+\tolerance=1000
+\hyphenpenalty=5000
+\exhyphenpenalty=5000
+
+% microtype: protrusion only (expansion not supported with XeLaTeX)
+\microtypesetup{protrusion=true}

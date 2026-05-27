@@ -7,9 +7,9 @@ const siteMetadata = {
   language: 'en-us',
   siteUrl: 'https://seniuts.com',
   email: 'vasiliseniuts@gmail.com',
-  github: 'https://github.com/seniut',
   linkedin: 'https://www.linkedin.com/in/vasili-seniuts/',
   locale: 'en-US',
+  stickyNav: true,
 }
 
 module.exports = siteMetadata

@@ -1,0 +1,62 @@
+name: Build CV and Consulting PDFs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - docs/profile/**
+      - docs/sales/**
+      - scripts/**
+      - templates/**
+      - assets/profile/**
+      - .github/workflows/cv-build.yml
+
+jobs:
+  build-pdfs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install Pandoc, TeX Live and Python dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            pandoc \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            lmodern \
+            python3 \
+            python3-pip
+          python3 -m pip install --quiet pillow
+
+      - name: Prepare profile photo
+        run: python3 scripts/prepare-profile-photo.py
+
+      - name: Build PDF documents
+        run: |
+          chmod +x scripts/make-cv.sh
+          ./scripts/make-cv.sh docs/profile/cv-lead-data-engineer.md generated
+          ./scripts/make-cv.sh --photo docs/profile/cv-lead-data-engineer.md generated
+          ./scripts/make-cv.sh docs/profile/consultant-profile.md generated
+          ./scripts/make-cv.sh docs/sales/consulting-one-pager.md generated
+
+      - name: Verify generated PDFs
+        run: |
+          test -f generated/Vasili_Seniuts_cv-lead-data-engineer.pdf
+          test -f generated/Vasili_Seniuts_cv-lead-data-engineer-photo.pdf
+          test -f generated/Vasili_Seniuts_consultant-profile.pdf
+          test -f generated/consulting-one-pager.pdf
+          ls -lh generated/*.pdf
+
+      - name: Upload PDF artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: cv-and-consulting-pdfs
+          path: generated/*.pdf
+          if-no-files-found: error
