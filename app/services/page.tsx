@@ -78,6 +78,9 @@ const principles = [
 const primaryButtonClass =
   'inline-flex items-center justify-center rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 dark:bg-primary-500 dark:text-gray-950 dark:hover:bg-primary-400'
 
+const secondaryButtonClass =
+  'inline-flex items-center justify-center rounded-md border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-900 hover:border-gray-400 hover:bg-gray-50 dark:border-gray-700 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-900'
+
 export default function ServicesPage() {
   return (
     <main className="mx-auto max-w-6xl py-16 sm:py-20">
@@ -121,6 +124,27 @@ export default function ServicesPage() {
                 {principle}
               </p>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-16 border-t border-gray-200/80 pt-12 dark:border-gray-800/80">
+        <div className="border-primary-200 dark:border-t-primary-900 rounded-lg border border-t-2 bg-white p-8 shadow-sm sm:p-10 dark:border-gray-800 dark:bg-gray-950">
+          <p className="text-primary-700 dark:text-primary-300 text-xs font-semibold uppercase">
+            Specialized entry point
+          </p>
+          <h2 className="mt-3 text-2xl font-semibold text-gray-950 dark:text-white">
+            Data Platform Cost Audit
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-gray-600 dark:text-gray-300">
+            If cloud, Databricks, or Spark costs are the immediate pain, start with a focused,
+            fixed-scope cost audit. It targets 20–40% savings across compute, storage, and
+            orchestration, and is designed to pay for itself.
+          </p>
+          <div className="mt-6">
+            <Link href="/cost-optimization" className={secondaryButtonClass}>
+              Explore the Cost Audit
+            </Link>
           </div>
         </div>
       </section>

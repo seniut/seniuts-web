@@ -111,6 +111,21 @@ const trustSignals = [
   },
 ]
 
+const proofPoints = [
+  {
+    metric: '~25%',
+    label: 'Spark / Databricks compute cost reduced on a high-volume production platform.',
+  },
+  {
+    metric: '70-80 TB/day',
+    label: 'Scale of the data platform where that optimization was delivered.',
+  },
+  {
+    metric: '8+ years',
+    label: 'Hands-on data platform engineering across AWS, Azure, and Databricks.',
+  },
+]
+
 const primaryButtonClass =
   'inline-flex items-center justify-center rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 dark:bg-primary-500 dark:text-gray-950 dark:hover:bg-primary-400'
 
@@ -285,9 +300,23 @@ export default function HomePage() {
         <div className="max-w-2xl">
           <SectionTitle>Built on practical engineering principles</SectionTitle>
           <SectionLead>
-            Credibility comes from senior delivery experience, production-first decisions, and a
-            clear transfer model. There are no invented logos, testimonials, or metrics here.
+            Credibility comes from senior, hands-on delivery experience and a clear transfer model —
+            not invented logos or testimonials. The numbers below reflect real production work.
           </SectionLead>
+        </div>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          {proofPoints.map((point) => (
+            <div
+              key={point.metric}
+              className="border-primary-200 dark:border-t-primary-900 rounded-lg border border-t-2 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-950"
+            >
+              <p className="text-3xl font-semibold text-gray-950 dark:text-white">{point.metric}</p>
+              <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-300">
+                {point.label}
+              </p>
+            </div>
+          ))}
         </div>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -30,6 +30,25 @@ const expectations = [
   'A transfer plan that makes internal ownership realistic instead of aspirational.',
 ]
 
+const trackRecord = [
+  {
+    metric: '8+ years',
+    label: 'Hands-on data engineering, platform architecture, and technical leadership.',
+  },
+  {
+    metric: '~25%',
+    label: 'Spark / Databricks compute cost reduced on a 70–80 TB/day production platform.',
+  },
+  {
+    metric: 'AWS + Azure',
+    label: 'Production data platform delivery across both major clouds.',
+  },
+  {
+    metric: '5+ domains',
+    label: 'AdTech, fintech, ticketing, insurance, and enterprise data systems.',
+  },
+]
+
 const primaryButtonClass =
   'inline-flex items-center justify-center rounded-md bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 dark:bg-primary-500 dark:text-gray-950 dark:hover:bg-primary-400'
 
@@ -92,6 +111,29 @@ export default function AboutPage() {
           reliable platform foundation and a realistic transfer plan. As the practice grows, trusted
           senior engineers may join for larger projects — but the founder remains hands-on.
         </p>
+      </section>
+
+      <section className="mt-16 border-t border-gray-200/80 pt-12 dark:border-gray-800/80">
+        <h2 className="text-2xl font-semibold text-gray-950 dark:text-white">
+          Track record in numbers
+        </h2>
+        <p className="mt-4 max-w-2xl text-base leading-7 text-gray-600 dark:text-gray-300">
+          Honest signals from real production work — not invented metrics or client logos.
+        </p>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {trackRecord.map((item) => (
+            <div
+              key={item.metric}
+              className="border-primary-200 dark:border-t-primary-900 rounded-lg border border-t-2 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-950"
+            >
+              <p className="text-2xl font-semibold text-gray-950 dark:text-white">{item.metric}</p>
+              <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-300">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="mt-16 border-t border-gray-200/80 pt-12 dark:border-gray-800/80">
