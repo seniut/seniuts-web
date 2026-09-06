@@ -82,9 +82,10 @@ This file is the map: what each document is for and where to start.
 
 ## sales/
 
-| File                                                           | Purpose                                                                                         |
-| -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| [sales/consulting-one-pager.md](sales/consulting-one-pager.md) | Short client-facing one-pager for outreach and LinkedIn Featured.                               |
-| [sales/cost-audit-playbook.md](sales/cost-audit-playbook.md)   | The Cost Audit wedge offer: buying signals, free teardown script, outreach templates, tracking. |
-| [sales/outreach-messages.md](sales/outreach-messages.md)       | Ready-to-send outreach message set with a positioning reminder.                                 |
-| [sales/target-clients.md](sales/target-clients.md)             | Framework for building a structured target client/partner list (starts with software houses).   |
+| File                                                                           | Purpose                                                                                         |
+| ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| [sales/consulting-one-pager.md](sales/consulting-one-pager.md)                 | Short client-facing one-pager for outreach and LinkedIn Featured.                               |
+| [sales/cost-audit-playbook.md](sales/cost-audit-playbook.md)                   | The Cost Audit wedge offer: buying signals, free teardown script, outreach templates, tracking. |
+| [sales/partners-platform-start-list.md](sales/partners-platform-start-list.md) | Practical starter list for partner and fractional platform channels.                            |
+| [sales/outreach-messages.md](sales/outreach-messages.md)                       | Ready-to-send outreach message set with a positioning reminder.                                 |
+| [sales/target-clients.md](sales/target-clients.md)                             | Framework for building a structured target client/partner list (starts with software houses).   |
